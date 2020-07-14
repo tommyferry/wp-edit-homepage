@@ -36,13 +36,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once 'includes/class-utils.php';
 require_once 'includes/class-wp-edit-homepage-plugin.php';
 
-/**
- * Load the plugin.
- *
- * @return void
- */
-function load_plugin() {
-	$plugin = new WP_Edit_Homepage_Plugin();
-	$plugin->load();
+if ( ! function_exists( __NAMESPACE__ . '\load_plugin' ) ) {
+	/**
+	 * Load the plugin.
+	 *
+	 * @return void
+	 */
+	function load_plugin() {
+		$plugin = new WP_Edit_Homepage_Plugin();
+		$plugin->load();
+	}
+	add_action( 'plugins_loaded', __NAMESPACE__ . '\load_plugin' );
 }
-add_action( 'plugins_loaded', __NAMESPACE__ . '\load_plugin' );
