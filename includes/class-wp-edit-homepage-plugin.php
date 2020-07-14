@@ -31,7 +31,15 @@ if ( ! class_exists( 'WP_Edit_Homepage_Plugin' ) ) {
 		}
 
 		/**
-		 * Filters the global $submenu to add a homepage edit link to the WP Admin bar.
+		 * Filters the global $submenu to add a homepage edit link to the WP admin bar.
+		 *
+		 * NOTE: Adding a filter to a WP global isn't ideal. However, as there's
+		 * no easy way to add custom links to the (sub)menu then this approach
+		 * will do for now. Some enhancements to the menu API have been suggested
+		 * on trac (see links below), so could be good options in the future.
+		 *
+		 * @link: https://core.trac.wordpress.org/ticket/12718
+		 * @link: https://core.trac.wordpress.org/ticket/39050
 		 *
 		 * @return void
 		 */
@@ -43,7 +51,7 @@ if ( ! class_exists( 'WP_Edit_Homepage_Plugin' ) ) {
 		}
 
 		/**
-		 * Filters the global $submenu to add a homepage edit link to the WP Admin bar.
+		 * Filters the global $submenu to add a homepage edit link to the WP admin bar.
 		 *
 		 * @param array $submenu An array of WP admin menu items.
 		 */
