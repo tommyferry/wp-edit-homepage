@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'WP_Edit_Homepage_Plugin' ) ) {
+if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 	/**
 	 * The main plugin class.
 	 */
