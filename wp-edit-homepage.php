@@ -9,7 +9,7 @@
  * Description: A simple WordPress plugin that adds a homepage edit link to the admin sidebar
  * Version: 1.0
  * Author: Tommy Ferry
- * License:
+ * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: wp-edit-homepage
  *
