@@ -70,7 +70,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 			}
 
 			// Get admin relative page edit URL.
-			$homepage_edit_link = Utils::get_admin_relative_edit_post_link( $homepage_id );
+			$homepage_edit_link = get_edit_post_link( $homepage_id );
 
 			// Bail early - no edit link found.
 			if ( empty( $homepage_edit_link ) ) {

@@ -33,7 +33,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-require_once 'includes/class-utils.php';
 require_once 'includes/class-wp-edit-homepage-plugin.php';
 
 if ( ! function_exists( __NAMESPACE__ . '\load_plugin' ) ) {
