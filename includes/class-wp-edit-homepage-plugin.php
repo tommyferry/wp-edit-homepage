@@ -131,8 +131,8 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 			// Create the link.
 			$plugins_page_link = "<a href=\"{$link}\">{$text}</a>";
 
-			// Adds the link to the end of the array.
-			$links[] = $plugins_page_link;
+			// Adds the link to the start of the array.
+			array_unshift( $links, $plugins_page_link );
 
 			return $links;
 		}
