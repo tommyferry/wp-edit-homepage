@@ -56,21 +56,8 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 		 * @param array $submenu An array of WP admin menu items.
 		 */
 		public function add_homepage_edit_link( $submenu ) {
-
-			// Bail early - no 'static' homepage.
-			if ( get_option( 'show_on_front' ) !== 'page' ) {
-				return $submenu;
-			}
-
-			$homepage_id = get_option( 'page_on_front', 0 );
-
-			// Bail early - homepage not set.
-			if ( empty( $homepage_id ) ) {
-				return $submenu;
-			}
-
-			// Get admin relative page edit URL.
-			$homepage_edit_link = get_edit_post_link( $homepage_id );
+			// Get homepage edit link.
+			$homepage_edit_link = $this->get_edit_homepage_link();
 
 			// Bail early - no edit link found.
 			if ( empty( $homepage_edit_link ) ) {
@@ -88,6 +75,32 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 			$submenu['edit.php?post_type=page'][] = $edit_homepage_menu_array;
 
 			return $submenu;
+		}
+
+		/**
+		 * Generates a link to the homepage edit screen.
+		 *
+		 * @return string The link to the homepage edit screen. Empty string on failure.
+		 */
+		public function get_edit_homepage_link() {
+			$homepage_edit_link = '';
+
+			// Bail early - no 'static' homepage.
+			if ( get_option( 'show_on_front' ) !== 'page' ) {
+				return $homepage_edit_link;
+			}
+
+			$homepage_id = get_option( 'page_on_front', 0 );
+
+			// Bail early - invalid homepage ID somehow.
+			if ( empty( $homepage_id ) ) {
+				return $homepage_edit_link;
+			}
+
+			// Get homepage edit URL.
+			$homepage_edit_link = get_edit_post_link( $homepage_id );
+
+			return $homepage_edit_link;
 		}
 	}
 }
