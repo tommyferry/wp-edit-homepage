@@ -54,6 +54,8 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 		 * Filters the global $submenu to add a homepage edit link to the WP admin bar.
 		 *
 		 * @param array $submenu An array of WP admin menu items.
+		 *
+		 * @return array The filtered WP admin menu with the home page edit link added (if possible).
 		 */
 		public function add_homepage_edit_link( $submenu ) {
 			// Get homepage edit link.
