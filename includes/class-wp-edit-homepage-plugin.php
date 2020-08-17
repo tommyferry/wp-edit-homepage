@@ -26,8 +26,13 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 			// Add custom filter to global WP admin submenu.
 			add_action( 'admin_head', array( $this, 'add_global_wp_admin_submenu_filter' ), 15 );
 
-			// Add the homepage edit link.
+			// Add the homepage edit link to WP admin menu.
 			add_filter( 'wpedh_filter_global_wp_admin_submenu', array( $this, 'add_homepage_edit_link' ) );
+
+			// Add the homepage edit link to plugins page item.
+			if ( defined( 'WP_EDIT_HOMEPAGE_BASENAME' ) ) {
+				add_filter( 'plugin_action_links_' . WP_EDIT_HOMEPAGE_BASENAME, array( $this, 'add_plugins_page_link' ) );
+			}
 		}
 
 		/**
@@ -103,6 +108,33 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 			$homepage_edit_link = get_edit_post_link( $homepage_id );
 
 			return $homepage_edit_link;
+		}
+
+
+		/**
+		 * Filters the list of action links displayed for this plugin in the Plugins list table.
+		 *
+		 * @param array $links An array of plugin action links.
+		 *
+		 * @return array The filtered array of plugin action links.
+		 */
+		public function add_plugins_page_link( $links ) {
+			$link = $this->get_edit_homepage_link();
+
+			// Bail early - no edit link found.
+			if ( empty( $link ) ) {
+				return $links;
+			}
+
+			$text = __( 'Edit Homepage', 'wp-edit-homepage' );
+
+			// Create the link.
+			$plugins_page_link = "<a href=\"{$link}\">{$text}</a>";
+
+			// Adds the link to the end of the array.
+			$links[] = $plugins_page_link;
+
+			return $links;
 		}
 	}
 }

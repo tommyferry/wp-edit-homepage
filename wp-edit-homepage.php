@@ -33,6 +33,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+if ( ! defined( 'WP_EDIT_HOMEPAGE_BASENAME' ) ) {
+	define( 'WP_EDIT_HOMEPAGE_BASENAME', plugin_basename( __FILE__ ) );
+}
+
 require_once 'includes/class-wp-edit-homepage-plugin.php';
 
 if ( ! function_exists( __NAMESPACE__ . '\load_plugin' ) ) {
