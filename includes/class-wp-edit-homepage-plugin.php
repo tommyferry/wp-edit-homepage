@@ -110,7 +110,6 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 			return $homepage_edit_link;
 		}
 
-
 		/**
 		 * Filters the list of action links displayed for this plugin in the Plugins list table.
 		 *
@@ -120,16 +119,16 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_Edit_Homepage_Plugin' ) ) {
 		 */
 		public function add_plugins_page_link( $links ) {
 			$link = $this->get_edit_homepage_link();
-
-			// Bail early - no edit link found.
-			if ( empty( $link ) ) {
-				return $links;
-			}
-
 			$text = __( 'Edit Homepage', 'wp-edit-homepage' );
 
+			// No homepage set - add fallback link to reading page.
+			if ( empty( $link ) ) {
+				$link = admin_url( 'options-reading.php' );
+				$text = __( 'Set Homepage', 'wp-edit-homepage' );
+			}
+
 			// Create the link.
-			$plugins_page_link = "<a href=\"{$link}\">{$text}</a>";
+			$plugins_page_link = '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>';
 
 			// Adds the link to the start of the array.
 			array_unshift( $links, $plugins_page_link );
