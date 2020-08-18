@@ -6,6 +6,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: WP Edit Homepage
+ * Plugin URI: https://github.com/tommyferry/wp-edit-homepage
  * Description: A simple WordPress plugin that adds a homepage edit link to the admin sidebar
  * Version: 1.0
  * Author: Tommy Ferry
