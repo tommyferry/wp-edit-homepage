@@ -1,8 +1,8 @@
 === WP Edit Homepage ===
 Contributors: tferry
 Tags: edit, homepage, page, admin
-Requires at least: 5.0
-Tested up to: 5.5
+Requires at least: 4.9
+Tested up to: 5.6
 Stable tag: 1.1
 Requires PHP: 7.0
 License: GPLv2 or later
